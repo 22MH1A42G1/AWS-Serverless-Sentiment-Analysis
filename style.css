@@ -1,0 +1,123 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f7f9fc, #e3f2fd);
+    color: #333;
+    padding: 40px;
+    line-height: 1.6;
+    animation: fadeInBody 1.5s ease forwards;
+}
+
+/* Title */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+}
+
+textarea:focus {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    outline: none;
+}
+
+/* Button */
+button {
+    margin-top: 15px;
+    padding: 12px 24px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #2c89e8, #1a73e8);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(44, 137, 232, 0.4);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Output styling */
+h3 {
+    margin-top: 25px;
+    font-size: 18px;
+    color: #2d3436;
+}
+
+#sentiment,
+#scores {
+    font-weight: bold;
+    color: #0984e3;
+    display: inline-block;
+    transition: all 0.4s ease;
+}
+
+#sentiment.highlight,
+#scores.highlight {
+    animation: highlightAnim 0.8s ease;
+}
+
+/* Animations */
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 1.2s ease forwards;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.pulse-button {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(44, 137, 232, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(44, 137, 232, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(44, 137, 232, 0); }
+}
+
+@keyframes highlightAnim {
+    0% { background-color: #dff9fb; }
+    100% { background-color: transparent; }
+}

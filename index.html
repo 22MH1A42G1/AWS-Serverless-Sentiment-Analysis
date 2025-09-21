@@ -2,36 +2,50 @@
 <html>
 <head>
     <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Sentiment Analysis</h1>
-    <textarea id="inputText"></textarea><br><br>
-    <button onclick="analyzeSentiment()">Analyze Sentiment</button>
+    <h1 class="fade-in">Sentiment Analysis</h1>
+    <textarea id="inputText" class="slide-in"></textarea><br><br>
+    <button onclick="analyzeSentiment()" class="pulse-button">Analyze Sentiment</button>
 
-    <h3>Sentiment: <span id="sentiment"></span></h3>
-    <h3>Scores: <span id="scores"></span></h3>
+    <h3 class="fade-in">Sentiment: <span id="sentiment"></span></h3>
+    <h3 class="fade-in">Scores: <span id="scores"></span></h3>
 
     <script>
         async function analyzeSentiment() {
-    const text = document.getElementById('inputText').value;
-    try {
-        const response = await fetch('https://pnj6w5sail.execute-api.us-east-1.amazonaws.com/prod/analyze', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: text })
-        });
+            const text = document.getElementById('inputText').value;
+            try {
+                const response = await fetch('https://ucm1z2y012.execute-api.us-east-1.amazonaws.com/test/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text })
+                });
 
-        const data = await response.json();
-        console.log('Lambda response:', data); // confirm structure here
+                const data = await response.json();
+                console.log('Lambda response:', data);
 
-        // No JSON.parse needed - data is already an object
-        document.getElementById('sentiment').innerText = data.sentiment;
-        document.getElementById('scores').innerText = JSON.stringify(data.score);
+                const sentimentEl = document.getElementById('sentiment');
+                const scoresEl = document.getElementById('scores');
 
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
+                sentimentEl.innerText = data.sentiment || 'N/A';
+                scoresEl.innerText = JSON.stringify(data.score || {});
+
+                // Add animation class to highlight update
+                sentimentEl.classList.remove('highlight');
+                scoresEl.classList.remove('highlight');
+
+                void sentimentEl.offsetWidth; // trigger reflow
+                void scoresEl.offsetWidth;
+
+                sentimentEl.classList.add('highlight');
+                scoresEl.classList.add('highlight');
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('sentiment').innerText = 'Error';
+                document.getElementById('scores').innerText = '';
+            }
+        }
     </script>
 </body>
 </html>
