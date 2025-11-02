@@ -17,7 +17,7 @@ The application is designed to be cost-effective, scalable, and easy to deploy, 
 
 #### Architecture Diagram
 
-[![Architecture](https://github.com/22MH1A42G1/AWS-Serverless-Sentiment-Analysis/blob/main/imgs/Architecture.jpg?raw=true)](https://youtu.be/15-qhxjy140?si=Luzu1PX6CI86MQuu)
+[![Architecture](https://github.com/22MH1A42G1/AWS-Serverless-Sentiment-Analysis/blob/main/imgs/Architecture_new.jpg?raw=true)](https://youtu.be/15-qhxjy140?si=Luzu1PX6CI86MQuu)
 
 ## 📦 Features
 
